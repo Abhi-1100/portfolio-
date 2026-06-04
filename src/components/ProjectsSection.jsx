@@ -116,10 +116,6 @@ function ProjectCard({ project, index }) {
 function ProjectsSection({ scrollToNext }) {
   return (
     <section id="section-3" className="portfolio-section projects-section">
-      {/* Background ambient blobs */}
-      <div className="projects-bg-blob projects-bg-blob--left" />
-      <div className="projects-bg-blob projects-bg-blob--right" />
-
       <div className="projects-inner">
         {/* Big Bold Heading (inspired by template) */}
         <div className="projects-heading-wrap">
