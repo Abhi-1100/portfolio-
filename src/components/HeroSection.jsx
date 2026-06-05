@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { SECTIONS } from '../App';
 
-function HeroSection({ onScrollDown }) {
+function HeroSection({ onScrollDown, activeSection, scrollTo }) {
   const heroRef = useRef(null);
 
   return (
@@ -43,6 +44,31 @@ function HeroSection({ onScrollDown }) {
         </g>
       </svg>
 
+      {/* Mobile Index Rectangle (Visible only on mobile) */}
+      <div className="mobile-hero-index">
+        <div className="sidebar-brand">
+          <span>The</span>
+          <span>Abhi's</span>
+          <span>Workstation</span>
+        </div>
+        <div className="sidebar-subtitle">
+          FULL STACK & AI DEVELOPMENT
+        </div>
+        <div className="sidebar-menu">
+          {SECTIONS.map((sec) => (
+            <button
+              key={sec.id}
+              onClick={() => scrollTo && scrollTo(sec.id)}
+              className={`sidebar-menu-item ${activeSection === sec.id ? 'active' : ''}`}
+              aria-label={`Go to ${sec.title}`}
+            >
+              <span className="sidebar-menu-label">{sec.title}</span>
+              <span className="sidebar-menu-leader" />
+              <span className="sidebar-menu-numeral">{sec.numeral}</span>
+            </button>
+          ))}
+        </div>
+      </div>
 
     </section>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X } from 'lucide-react';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import ProjectsSection from './components/ProjectsSection';
@@ -8,7 +9,7 @@ import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection';
 import Loader from './components/Loader';
 
-const SECTIONS = [
+export const SECTIONS = [
   { id: 'section-1', title: 'Home', numeral: 'I' },
   { id: 'section-2', title: 'About', numeral: 'II' },
   { id: 'section-3', title: 'Projects', numeral: 'III' },
@@ -22,6 +23,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('section-1');
   const [isIntroActive, setIsIntroActive] = useState(true);
   const [isAppLoading, setIsAppLoading] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const containerRef = useRef(null);
 
   // Intersection observer for active nav dot
@@ -52,6 +54,7 @@ function App() {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false); // Close mobile menu when navigating
   };
 
   const handleIntroScroll = (e) => {
@@ -72,7 +75,31 @@ function App() {
     <>
       {isAppLoading && <Loader onComplete={() => setIsAppLoading(false)} />}
 
-      {/* Left Sidebar Index Navigation */}
+      {/* Global Hamburger Menu Button (Mobile Only) */}
+      <button 
+        className="mobile-menu-btn" 
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle mobile menu"
+      >
+        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+
+      {/* Full Screen Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="sidebar-menu">
+          {SECTIONS.map((sec) => (
+            <button
+              key={sec.id}
+              onClick={() => scrollTo(sec.id)}
+              className={`sidebar-menu-item ${activeSection === sec.id ? 'active' : ''}`}
+            >
+              <span className="sidebar-menu-label">{sec.title}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Left Sidebar Index Navigation (Desktop Only) */}
       <nav className={`sidebar-nav ${activeSection === 'section-1' && isIntroActive ? 'on-hero' : 'scrolled'}`} aria-label="Section Navigation">
         <div className="sidebar-brand">
           <span>The</span>
@@ -100,8 +127,6 @@ function App() {
         </div>
       </nav>
 
-
-
       {/* Scroll-snap main container */}
       <main 
         className="portfolio-container" 
@@ -110,7 +135,11 @@ function App() {
         onWheel={handleIntroScroll}
         onTouchMove={handleIntroTouch}
       >
-        <HeroSection        onScrollDown={() => { setIsIntroActive(false); scrollTo('section-2'); }} />
+        <HeroSection 
+          onScrollDown={() => { setIsIntroActive(false); scrollTo('section-2'); }} 
+          activeSection={activeSection}
+          scrollTo={scrollTo}
+        />
         <AboutSection       onScrollDown={() => scrollTo('section-3')} />
         <ProjectsSection />
         <ActivitySection />
