@@ -1500,8 +1500,14 @@ html, body {
   .skills-container-layout {
     gap: 3.5rem;
   }
-  .skills-grid {
+  .skills-category-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-category-grid {
+    grid-template-columns: 1fr;
   }
 }
 
