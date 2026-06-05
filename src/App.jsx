@@ -100,11 +100,7 @@ function App() {
         </div>
       </nav>
 
-      <div className={`sidebar-footer ${activeSection === 'section-1' && isIntroActive ? 'on-hero' : 'scrolled'}`}>
-        <span>© Abhi Kakadiya</span>
-        <span>Terms of Service</span>
-        <span>Privacy Policy</span>
-      </div>
+
 
       {/* Scroll-snap main container */}
       <main 
@@ -121,9 +117,7 @@ function App() {
         <SkillsSection      onScrollDown={() => scrollTo('section-5')} />
         <AchievementsSection onScrollDown={() => scrollTo('section-6')} />
         <ContactSection />
-        <footer className="main-footer">
-          <p>© {new Date().getFullYear()} Abhi Kakadiya. Built with React & Vite.</p>
-        </footer>
+
       </main>
     </>
   );

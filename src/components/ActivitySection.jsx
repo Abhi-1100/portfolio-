@@ -52,7 +52,7 @@ function ActivitySection() {
 
         {/* Activity Grid */}
         <div className="activity-grid">
-          
+
           {/* Consistency (GitHub) */}
           <article className="activity-card activity-card-github">
             <div className="activity-card-header">
@@ -65,9 +65,9 @@ function ActivitySection() {
               </a>
             </div>
             <div className="github-chart-container">
-              <img 
-                src="https://ghchart.rshah.org/104af0/Abhi-1100" 
-                alt="Abhi-1100's Github chart" 
+              <img
+                src="https://ghchart.rshah.org/104af0/Abhi-1100"
+                alt="Abhi-1100's Github chart"
                 className="github-chart-img"
               />
             </div>
@@ -94,7 +94,7 @@ function ActivitySection() {
             <div className="activity-card-header" style={{ marginBottom: '1.5rem' }}>
               <h3 className="activity-card-title">Focus Areas</h3>
             </div>
-            
+
             <div className="progress-list">
               <div className="progress-item">
                 <span className="progress-label">EASY</span>

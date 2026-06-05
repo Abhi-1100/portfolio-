@@ -28,10 +28,10 @@ function ProjectCard({ project }) {
   return (
     <article className="project-card">
       <div className="project-card__image-wrap">
-        <img 
-          src={project.image} 
-          alt={project.title} 
-          className="project-card__image" 
+        <img
+          src={project.image}
+          alt={project.title}
+          className="project-card__image"
           loading="lazy"
         />
         <div className="project-card__image-overlay" />
@@ -42,7 +42,7 @@ function ProjectCard({ project }) {
           <span className="project-card__category">{project.category}</span>
           <h3 className="project-card__title">{project.title}</h3>
         </div>
-        
+
         <p className="project-card__desc">{project.desc}</p>
 
         <div className="project-card__stack">
@@ -68,7 +68,7 @@ function ProjectsSection() {
           <h2 className="section-title">PROJECTS</h2>
         </div>
       </div>
-      
+
       <div className="projects-inner">
         <p className="projects-sub" style={{ alignSelf: 'flex-start', maxWidth: '600px', marginBottom: '2rem', marginTop: '-1rem', fontFamily: "'Inter', sans-serif", fontSize: '16px', color: '#49473e' }}>
           A curated selection of my recent full-stack applications, AI integrations, and hardware systems.
@@ -79,7 +79,7 @@ function ProjectsSection() {
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
-        
+
       </div>
     </section>
   );

@@ -13,7 +13,7 @@ function HeroSection({ onScrollDown }) {
           {/* Crosshair matching the central box */}
           <line x1="0" y1="45%" x2="100%" y2="45%" className="loader-bg-path" pathLength="100" />
           <line x1="50%" y1="0" x2="50%" y2="100%" className="loader-bg-path" pathLength="100" />
-          
+
           {/* Box Extensions */}
           <line x1="calc(50% - 160px)" y1="0" x2="calc(50% - 160px)" y2="100%" className="loader-bg-path" pathLength="100" />
           <line x1="calc(50% + 160px)" y1="0" x2="calc(50% + 160px)" y2="100%" className="loader-bg-path" pathLength="100" />
@@ -43,15 +43,7 @@ function HeroSection({ onScrollDown }) {
         </g>
       </svg>
 
-      {/* Scroll indicator */}
-      <button
-        className="hero-scroll-btn"
-        onClick={onScrollDown}
-        aria-label="Scroll to next section"
-      >
-        <span>Scroll</span>
-        <ChevronDown size={18} />
-      </button>
+
     </section>
   );
 }

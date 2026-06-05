@@ -45,9 +45,9 @@ function SkillsSection({ onScrollDown }) {
 
       <div className="skills-container-layout">
         <div className="skills-col-left" style={{ width: '100%' }}>
-            <p className="skills-sub" style={{ alignSelf: 'flex-start', maxWidth: '600px', marginBottom: '1rem', marginTop: '-2rem', fontFamily: "'Inter', sans-serif", fontSize: '16px', color: '#49473e' }}>
-              From frontend frameworks to backend systems, I leverage modern tools to build scalable and maintainable solutions.
-            </p>
+          <p className="skills-sub" style={{ alignSelf: 'flex-start', maxWidth: '600px', marginBottom: '1rem', marginTop: '-2rem', fontFamily: "'Inter', sans-serif", fontSize: '16px', color: '#49473e' }}>
+            From frontend frameworks to backend systems, I leverage modern tools to build scalable and maintainable solutions.
+          </p>
 
           <div className="skills-category-grid">
             {SKILL_CATEGORIES.map(({ title, Icon, skills }) => (

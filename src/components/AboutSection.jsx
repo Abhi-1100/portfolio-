@@ -62,15 +62,7 @@ function AboutSection({ onScrollDown }) {
         </div>
       </div>
 
-      {/* Scroll down */}
-      <button
-        className="scroll-indicator about-scroll-btn"
-        onClick={onScrollDown}
-        aria-label="Scroll to next section"
-      >
-        <span>Scroll</span>
-        <ChevronDown size={18} />
-      </button>
+
 
     </section>
   );
