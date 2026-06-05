@@ -7,12 +7,12 @@ import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection';
 
 const SECTIONS = [
-  { id: 'section-1', title: 'Home' },
-  { id: 'section-2', title: 'About' },
-  { id: 'section-3', title: 'Projects' },
-  { id: 'section-4', title: 'Skills' },
-  { id: 'section-5', title: 'Achievements' },
-  { id: 'section-6', title: 'Contact' },
+  { id: 'section-1', title: 'Home', numeral: 'I' },
+  { id: 'section-2', title: 'About', numeral: 'II' },
+  { id: 'section-3', title: 'Projects', numeral: 'III' },
+  { id: 'section-4', title: 'Skills', numeral: 'IV' },
+  { id: 'section-5', title: 'Achievements', numeral: 'V' },
+  { id: 'section-6', title: 'Contact', numeral: 'VI' },
 ];
 
 function App() {
@@ -46,19 +46,34 @@ function App() {
 
   return (
     <>
-      {/* Floating right-side navigation dots — only navigation, no header */}
-      <nav className="nav-dots" aria-label="Section Navigation">
-        {SECTIONS.map((sec) => (
-          <div key={sec.id} className="nav-dot-wrapper">
-            <span className="nav-dot-label">{sec.title}</span>
+      {/* Left Sidebar Index Navigation */}
+      <nav className="sidebar-nav" aria-label="Section Navigation">
+        <div className="sidebar-brand">
+          <span>The</span>
+          <span>Abhi's</span>
+          <span>Workstation</span>
+        </div>
+
+        <div className="sidebar-menu">
+          {SECTIONS.map((sec) => (
             <button
+              key={sec.id}
               onClick={() => scrollTo(sec.id)}
-              className={`nav-dot ${activeSection === sec.id ? 'active' : ''}`}
+              className={`sidebar-menu-item ${activeSection === sec.id ? 'active' : ''}`}
               aria-label={`Go to ${sec.title}`}
-              title={sec.title}
-            />
-          </div>
-        ))}
+            >
+              <span className="sidebar-menu-label">{sec.title}</span>
+              <span className="sidebar-menu-leader" />
+              <span className="sidebar-menu-numeral">{sec.numeral}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="sidebar-footer">
+          <span>© Abhi Kakadiya</span>
+          <span>Terms of Service</span>
+          <span>Privacy Policy</span>
+        </div>
       </nav>
 
       {/* Scroll-snap main container */}

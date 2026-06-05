@@ -178,18 +178,13 @@ function HeroSection({ onScrollDown }) {
   return (
     <section id="section-1" className="hero-section" ref={heroRef}>
 
-      {/* Studio / brand label top-left */}
-      <div className="hero-brand-label">
-        <span>ABHI</span>
-        <span>STUDIO</span>
-      </div>
 
       {/* Central content block */}
       <div className="hero-center">
         {/* Big split title */}
-        <h1 className="hero-title" aria-label="Portfolio">
-          <span className="hero-title__line">PORT</span>
-          <span className="hero-title__line">FOLIO</span>
+        <h1 className="hero-title" aria-label="ABHI's Workstation">
+          <span className="hero-title__line">ABHI'S</span>
+          <span className="hero-title__line hero-title__line--small">WORKSTATION</span>
         </h1>
 
         {/* Subtitle */}
