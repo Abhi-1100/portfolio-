@@ -63,14 +63,14 @@ function ProjectCard({ project }) {
 function ProjectsSection() {
   return (
     <section id="section-3" className="portfolio-section projects-section">
-      <div className="projects-inner">
-        
-        <div className="heading-aligner">
-          <div className="section-title-wrap">
-            <h2 className="section-title">PROJECTS</h2>
-          </div>
+      <div className="heading-aligner">
+        <div className="section-title-wrap">
+          <h2 className="section-title">PROJECTS</h2>
         </div>
-        <p className="projects-sub">
+      </div>
+      
+      <div className="projects-inner">
+        <p className="projects-sub" style={{ alignSelf: 'flex-start', maxWidth: '600px', marginBottom: '2rem', marginTop: '-1rem', fontFamily: "'Inter', sans-serif", fontSize: '16px', color: '#49473e' }}>
           A curated selection of my recent full-stack applications, AI integrations, and hardware systems.
         </p>
 

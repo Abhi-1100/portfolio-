@@ -52,8 +52,9 @@ html, body {
 /* Portfolio Container: Scroll Snap setup */
 .portfolio-container {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   overflow-y: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   position: relative;
 }
@@ -70,7 +71,7 @@ html, body {
 /* Section styling */
 .portfolio-section {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -629,7 +630,6 @@ html, body {
 }
 
 @media (max-width: 900px) {
-  .projects-inner { padding: 6rem 1.5rem 3rem; }
   .projects-heading-wrap { grid-template-columns: 1fr; grid-template-rows: auto auto auto; gap: 0.5rem; }
   .projects-heading { grid-column: 1; grid-row: 2; font-size: clamp(2.5rem, 10vw, 4.5rem); }
   .projects-sub { grid-column: 1; grid-row: 3; padding-bottom: 0; padding-top: 0.5rem; max-width: 100%; }
@@ -1061,6 +1061,12 @@ html, body {
 
 .about-section::before {
   display: none;
+}
+
+.about-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .about-grid {
