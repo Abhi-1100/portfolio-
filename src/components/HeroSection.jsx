@@ -178,33 +178,7 @@ function HeroSection({ onScrollDown }) {
   return (
     <section id="section-1" className="hero-section" ref={heroRef}>
 
-
-      {/* Central content block */}
-      <div className="hero-center">
-        {/* Big split title */}
-        <h1 className="hero-title" aria-label="ABHI's Workstation">
-          <span className="hero-title__line">ABHI'S</span>
-          <span className="hero-title__line hero-title__line--small">WORKSTATION</span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="hero-subtitle">
-          FULL STACK &amp; AI DEVELOPMENT
-        </p>
-
-        {/* Decorative moustache / ornament */}
-        <div className="hero-ornament" aria-hidden="true">
-          <svg viewBox="0 0 80 30" width="80" height="30">
-            <path d="M 4 15 Q 20 2 40 15 Q 60 2 76 15"
-              fill="none" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Full-width doodle illustration layer */}
-      <div className="hero-illustration">
-        <DoodleCanvas />
-      </div>
+      {/* Background image is handled by CSS on .hero-section */}
 
       {/* Scroll indicator */}
       <button

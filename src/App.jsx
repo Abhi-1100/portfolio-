@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import ProjectsSection from './components/ProjectsSection';
+import ActivitySection from './components/ActivitySection';
 import SkillsSection from './components/SkillsSection';
 import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection';
@@ -10,13 +11,15 @@ const SECTIONS = [
   { id: 'section-1', title: 'Home', numeral: 'I' },
   { id: 'section-2', title: 'About', numeral: 'II' },
   { id: 'section-3', title: 'Projects', numeral: 'III' },
-  { id: 'section-4', title: 'Skills', numeral: 'IV' },
-  { id: 'section-5', title: 'Achievements', numeral: 'V' },
-  { id: 'section-6', title: 'Contact', numeral: 'VI' },
+  { id: 'section-activity', title: 'Activity', numeral: 'IV' },
+  { id: 'section-4', title: 'Skills', numeral: 'V' },
+  { id: 'section-5', title: 'Achievements', numeral: 'VI' },
+  { id: 'section-6', title: 'Contact', numeral: 'VII' },
 ];
 
 function App() {
   const [activeSection, setActiveSection] = useState('section-1');
+  const [isIntroActive, setIsIntroActive] = useState(true);
   const containerRef = useRef(null);
 
   // Intersection observer for active nav dot
@@ -28,7 +31,12 @@ function App() {
     };
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) setActiveSection(entry.target.id);
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+          if (entry.target.id === 'section-1') {
+            setIsIntroActive(true);
+          }
+        }
       });
     };
     const observer = new IntersectionObserver(observerCallback, observerOptions);
@@ -44,14 +52,32 @@ function App() {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleIntroScroll = (e) => {
+    if (activeSection === 'section-1' && isIntroActive) {
+      if (e.deltaY > 0) {
+        setIsIntroActive(false);
+      }
+    }
+  };
+
+  const handleIntroTouch = () => {
+    if (activeSection === 'section-1' && isIntroActive) {
+      setIsIntroActive(false);
+    }
+  };
+
   return (
     <>
       {/* Left Sidebar Index Navigation */}
-      <nav className="sidebar-nav" aria-label="Section Navigation">
+      <nav className={`sidebar-nav ${activeSection === 'section-1' && isIntroActive ? 'on-hero' : 'scrolled'}`} aria-label="Section Navigation">
         <div className="sidebar-brand">
           <span>The</span>
           <span>Abhi's</span>
           <span>Workstation</span>
+        </div>
+        
+        <div className="sidebar-subtitle">
+          FULL STACK & AI DEVELOPMENT
         </div>
 
         <div className="sidebar-menu">
@@ -68,19 +94,26 @@ function App() {
             </button>
           ))}
         </div>
-
-        <div className="sidebar-footer">
-          <span>© Abhi Kakadiya</span>
-          <span>Terms of Service</span>
-          <span>Privacy Policy</span>
-        </div>
       </nav>
 
+      <div className={`sidebar-footer ${activeSection === 'section-1' && isIntroActive ? 'on-hero' : 'scrolled'}`}>
+        <span>© Abhi Kakadiya</span>
+        <span>Terms of Service</span>
+        <span>Privacy Policy</span>
+      </div>
+
       {/* Scroll-snap main container */}
-      <main className="portfolio-container" ref={containerRef}>
-        <HeroSection        onScrollDown={() => scrollTo('section-2')} />
+      <main 
+        className="portfolio-container" 
+        ref={containerRef}
+        style={{ overflowY: (activeSection === 'section-1' && isIntroActive) ? 'hidden' : 'scroll' }}
+        onWheel={handleIntroScroll}
+        onTouchMove={handleIntroTouch}
+      >
+        <HeroSection        onScrollDown={() => { setIsIntroActive(false); scrollTo('section-2'); }} />
         <AboutSection       onScrollDown={() => scrollTo('section-3')} />
         <ProjectsSection />
+        <ActivitySection />
         <SkillsSection      onScrollDown={() => scrollTo('section-5')} />
         <AchievementsSection onScrollDown={() => scrollTo('section-6')} />
         <ContactSection />
