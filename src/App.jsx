@@ -117,6 +117,9 @@ function App() {
         <SkillsSection      onScrollDown={() => scrollTo('section-5')} />
         <AchievementsSection onScrollDown={() => scrollTo('section-6')} />
         <ContactSection />
+        <footer className="main-footer">
+          <p>© {new Date().getFullYear()} Abhi Kakadiya. Built with React & Vite.</p>
+        </footer>
       </main>
     </>
   );

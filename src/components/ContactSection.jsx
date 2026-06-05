@@ -27,17 +27,17 @@ function ContactSection() {
             className="contact-btn contact-btn--primary"
             aria-label="Send email"
           >
-            <Mail size={18} strokeWidth={2} />
+            <Mail size={16} strokeWidth={2.5} />
             SEND EMAIL
           </a>
           <a
-            href="https://github.com/"
+            href="https://github.com/Abhi-1100"
             target="_blank"
             rel="noopener noreferrer"
             className="contact-btn contact-btn--outline"
             aria-label="GitHub profile"
           >
-            <GitFork size={18} strokeWidth={2} />
+            <GitFork size={16} strokeWidth={2.5} />
             GITHUB
           </a>
           <a
@@ -47,13 +47,13 @@ function ContactSection() {
             className="contact-btn contact-btn--outline"
             aria-label="LinkedIn profile"
           >
-            <Link2 size={18} strokeWidth={2} />
+            <Link2 size={16} strokeWidth={2.5} />
             LINKEDIN
           </a>
         </div>
 
         {/* Footer line */}
-        <p className="contact-footer">
+        <p className="contact-footer" style={{ marginTop: '4rem', fontSize: '13px', color: '#8f6f6e', fontFamily: "'Inter', sans-serif" }}>
           © 2025 Abhi Kakadiya — Built with creative grit.
         </p>
       </div>

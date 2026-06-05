@@ -1,54 +1,72 @@
 import React from 'react';
-import { ChevronDown, Code2, Server, Terminal, Cpu, Database, Cloud, Layers, Palette, GitFork, Trophy } from 'lucide-react';
+import { ChevronDown, Code2, Layout, Server, Database, Wrench, BookOpen } from 'lucide-react';
 
-const SKILLS = [
-  { Icon: Code2,     label: 'React.js & Next.js',      tag: 'Frontend' },
-  { Icon: Server,    label: 'Node.js / Express',        tag: 'Backend' },
-  { Icon: Terminal,  label: 'Python & Flask',           tag: 'Scripting' },
-  { Icon: Cpu,       label: 'IoT & Arduino',            tag: 'Hardware' },
-  { Icon: Database,  label: 'PostgreSQL & MongoDB',     tag: 'Databases' },
-  { Icon: Cloud,     label: 'AWS & Docker',             tag: 'DevOps' },
-  { Icon: Layers,    label: 'System Design',            tag: 'Architecture' },
-  { Icon: Palette,   label: 'UI / UX Design',           tag: 'Design' },
+const SKILL_CATEGORIES = [
+  {
+    title: 'Languages',
+    Icon: Code2,
+    skills: ['TypeScript', 'JavaScript', 'Python', 'Java', 'C++', 'SQL']
+  },
+  {
+    title: 'Frontend',
+    Icon: Layout,
+    skills: ['React', 'Next.js', 'Tailwind CSS', 'HTML5', 'CSS3', 'Redux', 'Material UI']
+  },
+  {
+    title: 'Backend & Data',
+    Icon: Server,
+    skills: ['Node.js', 'Express.js', 'REST APIs', 'GraphQL', 'Socket.io']
+  },
+  {
+    title: 'Databases',
+    Icon: Database,
+    skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'Prisma']
+  },
+  {
+    title: 'Tools & Practices',
+    Icon: Wrench,
+    skills: ['Git', 'GitHub', 'VS Code', 'Docker', 'Postman', 'Vercel', 'Linux']
+  },
+  {
+    title: 'CS Concepts',
+    Icon: BookOpen,
+    skills: ['Data Structures & Algorithms', 'OOP', 'DBMS', 'Operating Systems', 'Computer Networks', 'Agile/Scrum']
+  }
 ];
 
 function SkillsSection({ onScrollDown }) {
   return (
     <section id="section-4" className="portfolio-section skills-section">
-      <div className="skills-container-layout">
-        {/* LEFT COLUMN: Skills & Tools */}
-        <div className="skills-col-left">
-          <div className="skills-header">
-            <div>
-              <p className="skills-eyebrow">WHAT I WORK WITH</p>
-              <h2 className="skills-heading">
-                SKILLS<br />
-                <span className="skills-heading--outline">&amp; TOOLS</span>
-              </h2>
-            </div>
-            <p className="skills-sub">
-              The engine behind production-grade platforms, IoT systems and AI experiences.
-            </p>
-          </div>
+      <div className="heading-aligner">
+        <div className="section-title-wrap">
+          <h2 className="section-title">SKILLS & TOOLS</h2>
+        </div>
+      </div>
 
-          <div className="skills-grid">
-            {SKILLS.map(({ Icon, label, tag }) => (
-              <div className="skill-card" key={label}>
-                <Icon size={26} className="skill-icon" strokeWidth={1.5} />
-                <span className="skill-label">{label}</span>
-                <span className="skill-tag">{tag}</span>
+      <div className="skills-container-layout">
+        <div className="skills-col-left" style={{ width: '100%' }}>
+            <p className="skills-sub" style={{ alignSelf: 'flex-start', maxWidth: '600px', marginBottom: '1rem', marginTop: '-2rem', fontFamily: "'Inter', sans-serif", fontSize: '16px', color: '#49473e' }}>
+              From frontend frameworks to backend systems, I leverage modern tools to build scalable and maintainable solutions.
+            </p>
+
+          <div className="skills-category-grid">
+            {SKILL_CATEGORIES.map(({ title, Icon, skills }) => (
+              <div className="skills-category-card" key={title}>
+                <div className="skills-category-header">
+                  <Icon size={24} className="skills-category-icon" strokeWidth={2.5} />
+                  <h3 className="skills-category-title">{title}</h3>
+                </div>
+                <div className="skills-pill-container">
+                  {skills.map(skill => (
+                    <span key={skill} className="skills-pill">{skill}</span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
         </div>
-
-
       </div>
 
-      <button className="about-scroll-btn" onClick={onScrollDown} aria-label="Scroll to next section">
-        <span>Scroll</span>
-        <ChevronDown size={18} />
-      </button>
     </section>
   );
 }

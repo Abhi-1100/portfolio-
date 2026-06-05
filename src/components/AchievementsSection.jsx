@@ -26,9 +26,13 @@ function AchievementsSection({ onScrollDown }) {
   return (
     <section id="section-5" className="portfolio-section achieve-section">
 
+      <div className="heading-aligner">
+        <div className="section-title-wrap">
+          <h2 className="section-title">ACHIEVEMENTS</h2>
+        </div>
+      </div>
+
       <div className="achieve-inner">
-        <p className="achieve-eyebrow">MILESTONES</p>
-        <h2 className="achieve-heading">ACHIEVEMENTS</h2>
 
         <div className="achieve-grid">
           {ACHIEVEMENTS.map(({ Icon, accent, title, desc }) => (

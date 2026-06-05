@@ -5,6 +5,13 @@ function AboutSection({ onScrollDown }) {
   return (
     <section id="section-2" className="portfolio-section about-section">
 
+      {/* Page Title */}
+      <div className="heading-aligner">
+        <div className="section-title-wrap">
+          <h2 className="section-title">ABOUT ME</h2>
+        </div>
+      </div>
+
       {/* Two-column layout */}
       <div className="about-grid">
 
