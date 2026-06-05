@@ -6,6 +6,7 @@ import ActivitySection from './components/ActivitySection';
 import SkillsSection from './components/SkillsSection';
 import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection';
+import Loader from './components/Loader';
 
 const SECTIONS = [
   { id: 'section-1', title: 'Home', numeral: 'I' },
@@ -20,6 +21,7 @@ const SECTIONS = [
 function App() {
   const [activeSection, setActiveSection] = useState('section-1');
   const [isIntroActive, setIsIntroActive] = useState(true);
+  const [isAppLoading, setIsAppLoading] = useState(true);
   const containerRef = useRef(null);
 
   // Intersection observer for active nav dot
@@ -68,6 +70,8 @@ function App() {
 
   return (
     <>
+      {isAppLoading && <Loader onComplete={() => setIsAppLoading(false)} />}
+
       {/* Left Sidebar Index Navigation */}
       <nav className={`sidebar-nav ${activeSection === 'section-1' && isIntroActive ? 'on-hero' : 'scrolled'}`} aria-label="Section Navigation">
         <div className="sidebar-brand">
