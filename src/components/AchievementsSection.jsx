@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronDown, Trophy, BadgeCheck, GraduationCap } from 'lucide-react';
+import starsImg from '../assets/background-assets/backimg8-removebg-preview.png';
 
 const ACHIEVEMENTS = [
   {
@@ -25,6 +26,7 @@ const ACHIEVEMENTS = [
 function AchievementsSection({ onScrollDown }) {
   return (
     <section id="section-5" className="portfolio-section achieve-section">
+      <img src={starsImg} alt="" className="achieve-corner-img" />
 
       <div className="heading-aligner">
         <div className="section-title-wrap">

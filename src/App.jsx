@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import ProjectsSection from './components/ProjectsSection';
+import BlogSection from './components/BlogSection';
 import ActivitySection from './components/ActivitySection';
 import SkillsSection from './components/SkillsSection';
 import AchievementsSection from './components/AchievementsSection';
@@ -142,6 +143,7 @@ function App() {
         />
         <AboutSection       onScrollDown={() => scrollTo('section-3')} />
         <ProjectsSection />
+        <BlogSection />
         <ActivitySection />
         <SkillsSection      onScrollDown={() => scrollTo('section-5')} />
         <AchievementsSection onScrollDown={() => scrollTo('section-6')} />

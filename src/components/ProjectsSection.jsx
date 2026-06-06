@@ -27,6 +27,14 @@ const PROJECTS = [
 function ProjectCard({ project }) {
   return (
     <article className="project-card">
+      <div className="window-header">
+        <div className="window-dots">
+          <span className="window-dot"></span>
+          <span className="window-dot"></span>
+        </div>
+        <div className="window-title">2020-04-08-{project.id}.html</div>
+      </div>
+
       <div className="project-card__image-wrap">
         <img
           src={project.image}
@@ -39,7 +47,6 @@ function ProjectCard({ project }) {
 
       <div className="project-card__body">
         <div>
-          <span className="project-card__category">{project.category}</span>
           <h3 className="project-card__title">{project.title}</h3>
         </div>
 
@@ -52,8 +59,7 @@ function ProjectCard({ project }) {
         </div>
 
         <div className="project-card__actions">
-          <a href={project.demoUrl} className="project-btn project-btn--demo">Live Demo</a>
-          <a href={project.codeUrl} className="project-btn project-btn--code">Code</a>
+          <a href={project.demoUrl} className="project-btn project-btn--demo">LIVE DEMO</a>
         </div>
       </div>
     </article>
