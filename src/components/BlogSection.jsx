@@ -4,6 +4,7 @@ import blogImg2 from '../assets/WhatsApp Image 2026-04-23 at 2.47.28 PM.jpeg';
 import blogImg3 from '../assets/file_00000000ad3c7207882d3155a4e326ce.png';
 import blogImg4 from '../assets/Snapchat-706739872.jpg.jpeg';
 import cornerImg from '../assets/background-assets/backimg9-removebg-preview.png';
+import leftTearImg from '../assets/background-assets/backimg10-removebg-preview.png';
 
 const BLOG_POSTS = [
   { id: '1', title: 'Late Night Work', date: '2026-04-23', image: blogImg2 },
@@ -39,9 +40,7 @@ function BlogCard({ post, index }) {
           Officia sit numquam fugiat sint molestiae id. Est modi est at debitis
           dolorem. Ut voluptate quod rem dolores sint molestiae maiores.
         </p>
-        <div className="project-card__actions">
-          <a href="#" className="project-btn blog-btn">View project</a>
-        </div>
+
       </div>
     </article>
   );
@@ -51,6 +50,7 @@ function BlogSection() {
   return (
     <section id="section-blog" className="portfolio-section blog-section">
       <img src={cornerImg} alt="" className="blog-corner-img" />
+      <img src={leftTearImg} alt="" className="blog-left-tear-img" />
       <div className="blog-inner">
         <div className="blog-header-container">
           <h2 className="section-title">From the blog</h2>

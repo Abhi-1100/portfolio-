@@ -5,7 +5,7 @@ const SKILL_CATEGORIES = [
   {
     title: 'Languages',
     Icon: Code2,
-    skills: ['TypeScript', 'JavaScript', 'Python', 'Java', 'C++', 'SQL']
+    skills: ['C', 'C++', 'Java', 'Python', 'JavaScript', 'TypeScript']
   },
   {
     title: 'Frontend',
