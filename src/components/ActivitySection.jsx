@@ -37,7 +37,7 @@ function ActivitySection() {
         <div className="heading-aligner">
           <div className="activity-heading-wrap">
             <div className="section-title-wrap" style={{ marginBottom: 0 }}>
-              <h2 className="section-title">CODING ACTIVITY</h2>
+              <h2 className="section-title">CODING PROFILE</h2>
             </div>
             <div className="activity-links">
               <a href="https://github.com/Abhi-1100" target="_blank" rel="noopener noreferrer" className="activity-btn">

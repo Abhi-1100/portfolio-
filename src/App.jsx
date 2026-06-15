@@ -6,7 +6,6 @@ import ProjectsSection from './components/ProjectsSection';
 import BlogSection from './components/BlogSection';
 import ActivitySection from './components/ActivitySection';
 import SkillsSection from './components/SkillsSection';
-import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection';
 import Loader from './components/Loader';
 
@@ -14,9 +13,9 @@ export const SECTIONS = [
   { id: 'section-1', title: 'Home', numeral: 'I' },
   { id: 'section-2', title: 'About', numeral: 'II' },
   { id: 'section-3', title: 'Projects', numeral: 'III' },
-  { id: 'section-activity', title: 'Activity', numeral: 'IV' },
-  { id: 'section-4', title: 'Skills', numeral: 'V' },
-  { id: 'section-5', title: 'Achievements', numeral: 'VI' },
+  { id: 'section-blog', title: 'Activity', numeral: 'IV' },
+  { id: 'section-activity', title: 'Coding Profile', numeral: 'V' },
+  { id: 'section-4', title: 'Skills', numeral: 'VI' },
   { id: 'section-6', title: 'Contact', numeral: 'VII' },
 ];
 
@@ -77,8 +76,8 @@ function App() {
       {isAppLoading && <Loader onComplete={() => setIsAppLoading(false)} />}
 
       {/* Global Hamburger Menu Button (Mobile Only) */}
-      <button 
-        className="mobile-menu-btn" 
+      <button
+        className="mobile-menu-btn"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="Toggle mobile menu"
       >
@@ -107,7 +106,7 @@ function App() {
           <span>Abhi's</span>
           <span>Workstation</span>
         </div>
-        
+
         <div className="sidebar-subtitle">
           FULL STACK & AI DEVELOPMENT
         </div>
@@ -129,24 +128,23 @@ function App() {
       </nav>
 
       {/* Scroll-snap main container */}
-      <main 
-        className="portfolio-container" 
+      <main
+        className="portfolio-container"
         ref={containerRef}
         style={{ overflowY: (activeSection === 'section-1' && isIntroActive) ? 'hidden' : 'scroll' }}
         onWheel={handleIntroScroll}
         onTouchMove={handleIntroTouch}
       >
-        <HeroSection 
-          onScrollDown={() => { setIsIntroActive(false); scrollTo('section-2'); }} 
+        <HeroSection
+          onScrollDown={() => { setIsIntroActive(false); scrollTo('section-2'); }}
           activeSection={activeSection}
           scrollTo={scrollTo}
         />
-        <AboutSection       onScrollDown={() => scrollTo('section-3')} />
+        <AboutSection onScrollDown={() => scrollTo('section-3')} />
         <ProjectsSection />
         <BlogSection />
         <ActivitySection />
-        <SkillsSection      onScrollDown={() => scrollTo('section-5')} />
-        <AchievementsSection onScrollDown={() => scrollTo('section-6')} />
+        <SkillsSection onScrollDown={() => scrollTo('section-6')} />
         <ContactSection />
 
       </main>

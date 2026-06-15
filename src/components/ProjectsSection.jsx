@@ -17,7 +17,7 @@ const PROJECTS = [
     category: 'IoT System',
     title: 'VeloxPark',
     desc: 'IoT-integrated smart parking solution using real-time sensor data to optimize city-wide parking availability.',
-    stack: ['IoT Hub', 'Flutter', 'NoSQL'],
+    stack: ['React', 'IoT', 'Firebase'],
     demoUrl: 'https://velox-park.vercel.app/',
     codeUrl: '#',
     image: veloxParkImg
@@ -59,7 +59,7 @@ function ProjectCard({ project }) {
         </div>
 
         <div className="project-card__actions">
-          <a href={project.demoUrl} className="project-btn project-btn--demo">LIVE DEMO</a>
+          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="project-btn project-btn--demo">LIVE DEMO</a>
         </div>
       </div>
     </article>

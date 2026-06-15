@@ -2430,7 +2430,8 @@ body {
   background-size: 75% auto;
   background-position: bottom center;
   background-repeat: no-repeat;
-  background-color: #ffffff; /* fallback color to match the white top part of the image */
+  background-color: #ffffff;
+  /* fallback color to match the white top part of the image */
 }
 
 /* ============================================================
@@ -2467,6 +2468,19 @@ body {
   z-index: 10;
 }
 
+@media (max-width: 768px) {
+  .blog-corner-img {
+    width: 150px;
+    top: -15px;
+    right: -10px;
+  }
+
+  .blog-left-tear-img {
+    width: 180px;
+    left: -10px;
+  }
+}
+
 /* ============================================================
    ACHIEVEMENT SECTION CORNER IMAGE
    ============================================================ */
@@ -2483,4 +2497,90 @@ body {
   height: auto;
   z-index: 5;
   pointer-events: none;
+}
+
+.parallax-effect-glare-scale {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 742px;
+  height: 337px;
+  border-radius: 24px;
+  transform-style: preserve-3d;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.inner-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+}
+
+.tilt-layer {
+  position: absolute;
+  border-radius: 24px;
+  transition: all 0.3s ease;
+}
+
+.tilt-layer-bg {
+  transform: translateZ(0);
+}
+
+.tilt-layer-2 {
+  transform: translateZ(50px) translate(40px, -20px);
+  z-index: 2;
+}
+
+.tilt-layer-3 {
+  transform: translateZ(90px) translate(-60px, 40px);
+  z-index: 3;
+}
+
+.tilt-text-layer {
+  transform: translateZ(120px);
+  z-index: 4;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1.5rem 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.tilt-text-layer h2 {
+  font-family: var(--font-sans);
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: -1px;
+}
+
+.tilt-text-layer p {
+  color: #f0f0f0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 900px) {
+  .parallax-effect-glare-scale {
+    width: 90vw;
+    height: calc(90vw * 337 / 742);
+  }
+
+  .tilt-layer-2,
+  .tilt-layer-3 {
+    display: none;
+  }
 }
