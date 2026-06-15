@@ -9,6 +9,8 @@ import SkillsSection from './components/SkillsSection';
 import ContactSection from './components/ContactSection';
 import Loader from './components/Loader';
 
+import GalleryPage from './components/GalleryPage';
+
 export const SECTIONS = [
   { id: 'section-1', title: 'Home', numeral: 'I' },
   { id: 'section-2', title: 'About', numeral: 'II' },
@@ -20,6 +22,7 @@ export const SECTIONS = [
 ];
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
   const [activeSection, setActiveSection] = useState('section-1');
   const [isIntroActive, setIsIntroActive] = useState(true);
   const [isAppLoading, setIsAppLoading] = useState(true);
@@ -28,6 +31,8 @@ function App() {
 
   // Intersection observer for active nav dot
   useEffect(() => {
+    if (currentPage !== 'home') return;
+    
     const observerOptions = {
       root: containerRef.current,
       rootMargin: '0px',
@@ -49,7 +54,7 @@ function App() {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [currentPage]);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -75,79 +80,87 @@ function App() {
     <>
       {isAppLoading && <Loader onComplete={() => setIsAppLoading(false)} />}
 
-      {/* Global Hamburger Menu Button (Mobile Only) */}
-      <button
-        className="mobile-menu-btn"
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        aria-label="Toggle mobile menu"
-      >
-        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-      </button>
+      {currentPage === 'gallery' ? (
+        <GalleryPage onBack={() => {
+          setCurrentPage('home');
+          // Reset scroll state if needed, but it should be fine
+        }} />
+      ) : (
+        <>
+          {/* Global Hamburger Menu Button (Mobile Only) */}
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
 
-      {/* Full Screen Mobile Menu Overlay */}
-      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
-        <div className="sidebar-menu">
-          {SECTIONS.map((sec) => (
-            <button
-              key={sec.id}
-              onClick={() => scrollTo(sec.id)}
-              className={`sidebar-menu-item ${activeSection === sec.id ? 'active' : ''}`}
-            >
-              <span className="sidebar-menu-label">{sec.title}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+          {/* Full Screen Mobile Menu Overlay */}
+          <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+            <div className="sidebar-menu">
+              {SECTIONS.map((sec) => (
+                <button
+                  key={sec.id}
+                  onClick={() => scrollTo(sec.id)}
+                  className={`sidebar-menu-item ${activeSection === sec.id ? 'active' : ''}`}
+                >
+                  <span className="sidebar-menu-label">{sec.title}</span>
+                </button>
+              ))}
+            </div>
+          </div>
 
-      {/* Left Sidebar Index Navigation (Desktop Only) */}
-      <nav className={`sidebar-nav ${activeSection === 'section-1' && isIntroActive ? 'on-hero' : 'scrolled'}`} aria-label="Section Navigation">
-        <div className="sidebar-brand">
-          <span>The</span>
-          <span>Abhi's</span>
-          <span>Workstation</span>
-        </div>
+          {/* Left Sidebar Index Navigation (Desktop Only) */}
+          <nav className={`sidebar-nav ${activeSection === 'section-1' && isIntroActive ? 'on-hero' : 'scrolled'}`} aria-label="Section Navigation">
+            <div className="sidebar-brand">
+              <span>The</span>
+              <span>Abhi's</span>
+              <span>Workstation</span>
+            </div>
 
-        <div className="sidebar-subtitle">
-          FULL STACK & AI DEVELOPMENT
-        </div>
+            <div className="sidebar-subtitle">
+              FULL STACK & AI DEVELOPMENT
+            </div>
 
-        <div className="sidebar-menu">
-          {SECTIONS.map((sec) => (
-            <button
-              key={sec.id}
-              onClick={() => scrollTo(sec.id)}
-              className={`sidebar-menu-item ${activeSection === sec.id ? 'active' : ''}`}
-              aria-label={`Go to ${sec.title}`}
-            >
-              <span className="sidebar-menu-label">{sec.title}</span>
-              <span className="sidebar-menu-leader" />
-              <span className="sidebar-menu-numeral">{sec.numeral}</span>
-            </button>
-          ))}
-        </div>
-      </nav>
+            <div className="sidebar-menu">
+              {SECTIONS.map((sec) => (
+                <button
+                  key={sec.id}
+                  onClick={() => scrollTo(sec.id)}
+                  className={`sidebar-menu-item ${activeSection === sec.id ? 'active' : ''}`}
+                  aria-label={`Go to ${sec.title}`}
+                >
+                  <span className="sidebar-menu-label">{sec.title}</span>
+                  <span className="sidebar-menu-leader" />
+                  <span className="sidebar-menu-numeral">{sec.numeral}</span>
+                </button>
+              ))}
+            </div>
+          </nav>
 
-      {/* Scroll-snap main container */}
-      <main
-        className="portfolio-container"
-        ref={containerRef}
-        style={{ overflowY: (activeSection === 'section-1' && isIntroActive) ? 'hidden' : 'scroll' }}
-        onWheel={handleIntroScroll}
-        onTouchMove={handleIntroTouch}
-      >
-        <HeroSection
-          onScrollDown={() => { setIsIntroActive(false); scrollTo('section-2'); }}
-          activeSection={activeSection}
-          scrollTo={scrollTo}
-        />
-        <AboutSection onScrollDown={() => scrollTo('section-3')} />
-        <ProjectsSection />
-        <BlogSection />
-        <ActivitySection />
-        <SkillsSection onScrollDown={() => scrollTo('section-6')} />
-        <ContactSection />
-
-      </main>
+          {/* Scroll-snap main container */}
+          <main
+            className="portfolio-container"
+            ref={containerRef}
+            style={{ overflowY: (activeSection === 'section-1' && isIntroActive) ? 'hidden' : 'scroll' }}
+            onWheel={handleIntroScroll}
+            onTouchMove={handleIntroTouch}
+          >
+            <HeroSection
+              onScrollDown={() => { setIsIntroActive(false); scrollTo('section-2'); }}
+              activeSection={activeSection}
+              scrollTo={scrollTo}
+            />
+            <AboutSection onScrollDown={() => scrollTo('section-3')} />
+            <ProjectsSection />
+            <BlogSection onNavigate={() => setCurrentPage('gallery')} />
+            <ActivitySection />
+            <SkillsSection onScrollDown={() => scrollTo('section-6')} />
+            <ContactSection />
+          </main>
+        </>
+      )}
     </>
   );
 }

@@ -31,6 +31,7 @@ function ProjectCard({ project }) {
         <div className="window-dots">
           <span className="window-dot"></span>
           <span className="window-dot"></span>
+          <span className="window-dot"></span>
         </div>
         <div className="window-title">2020-04-08-{project.id}.html</div>
       </div>
