@@ -16,24 +16,24 @@ const BLOG_POSTS = [
   },
   {
     id: '2',
-    title: '"Building the tools that power real markets."',
+    title: '"Where code meets the market."',
     date: '2026-05-17',
     image: blogImg1,
-    desc: 'During my internship at Fincept Corporation, this was my daily workspace — analyzing live crypto market data on the Fincept Terminal while contributing to its core development. As a C++ Intern, I worked on open-source contributions to the Fincept Terminal, a professional-grade financial research platform supporting real-time trading, algo strategies, and quantlib integration. A small desk, a focused mind, and real-world impact.'
+    desc: 'A snapshot from my internship at Fincept Corporation — working with live BTC/USDT data on the Fincept Terminal. As a C++ Intern, I contributed to the open-source terminal that powers professional trading and financial research. One month, real contributions, real markets.'
   },
   {
     id: '3',
-    title: '"One day at a time, one problem at a time."',
+    title: '"Growth tracked in two ways — LeetCode streaks & a little plant."',
     date: '2026-04-24',
     image: blogImg3,
-    desc: 'A morning study session from my hostel room — solving Data Structures & Algorithms on LeetCode with 132+ problems solved and a 50 Days Badge earned. The warm sunlight, a little plant growing in a glass bottle, and a consistent green heatmap tell the same story — steady growth, every single day. Just like the plant, progress is quiet but real.'
+    desc: 'My hostel desk setup where consistency was built — daily DSA practice on LeetCode, a Google Cloud sticker on the laptop, and a sprouting plant as a daily reminder that small steps compound. 132 problems. 90 active days. Still going.'
   },
   {
     id: '4',
-    title: '"Where most of the magic happened."',
+    title: '"Comfort over aesthetics — this desk built it all."',
     date: '2026-06-06',
     image: blogImg4,
-    desc: "My hostel room desk — the birthplace of most of my projects. VS Code open, terminal running, React components being built with Claude's assistance in the side panel. Surrounded by a cozy plushie, Iron Man, Captain America, and a little plant — this chaotic-yet-personal setup is where focus lived. Not the fanciest workspace, but every line of code written here was real."
+    desc: "Late evenings, dim light, React code on screen and Marvel figures keeping watch. My hostel setup was humble but powerful — a reminder that great work doesn't need a perfect environment, just a determined mind."
   },
 ];
 
