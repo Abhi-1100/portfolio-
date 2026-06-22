@@ -83,7 +83,11 @@ function App() {
       {currentPage === 'gallery' ? (
         <GalleryPage onBack={() => {
           setCurrentPage('home');
-          // Reset scroll state if needed, but it should be fine
+          setIsIntroActive(false);
+          setActiveSection('section-blog');
+          setTimeout(() => {
+            scrollTo('section-blog');
+          }, 50);
         }} />
       ) : (
         <>

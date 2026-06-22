@@ -76,21 +76,25 @@ function BlogSection({ onNavigate }) {
       <img src={cornerImg} alt="" className="blog-corner-img" />
       <img src={leftTearImg} alt="" className="blog-left-tear-img" />
       <div className="blog-inner">
-        <div className="blog-header-container">
-          <h2 className="section-title">From the blog</h2>
-          <a
-            href="#"
-            className="blog-view-all"
-            onClick={(e) => {
-              e.preventDefault();
-              if (onNavigate) {
-                onNavigate();
-              }
-            }}
-          >
-            View all blog posts
-          </a>
+        <div className="heading-aligner">
+          <div className="section-title-wrap">
+            <h2 className="section-title">ACTIVITY</h2>
+          </div>
         </div>
+
+        <a
+          href="#"
+          className="blog-view-all"
+          style={{ display: 'inline-block', marginBottom: '2.5rem', marginTop: '-1.5rem', alignSelf: 'flex-start' }}
+          onClick={(e) => {
+            e.preventDefault();
+            if (onNavigate) {
+              onNavigate();
+            }
+          }}
+        >
+          See all activity
+        </a>
 
         <div className="blog-stack">
           {BLOG_POSTS.map((post, i) => (

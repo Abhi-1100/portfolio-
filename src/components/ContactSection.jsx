@@ -53,7 +53,7 @@ function ContactSection() {
         </div>
 
         {/* Footer line */}
-        <p className="contact-footer" style={{ marginTop: '4rem', fontSize: '13px', color: '#8f6f6e', fontFamily: "'Inter', sans-serif" }}>
+        <p className="contact-footer" style={{ marginTop: '4rem', fontSize: '13px', fontFamily: "'Inter', sans-serif" }}>
           © 2025 Abhi Kakadiya — Built with creative grit.
         </p>
       </div>
