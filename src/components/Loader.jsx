@@ -1,16 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import mainBg from '../assets/main_lending.jpeg';
 
 function Loader({ onComplete }) {
   const [isAnimating, setIsAnimating] = useState(true);
 
   useEffect(() => {
-    // The animation takes 3 seconds. Give it a tiny bit of buffer before fading out.
-    const timer = setTimeout(() => {
+    let imgLoaded = false;
+    const img = new Image();
+    img.src = mainBg;
+
+    const checkComplete = () => {
       setIsAnimating(false);
       setTimeout(onComplete, 500); // 500ms fade out transition
-    }, 3000);
+    };
 
-    return () => clearTimeout(timer);
+    // We want the loader to display for exactly 4.0 seconds (matching the rectangle animation duration),
+    // but we also want to wait until the massive background image has fully loaded if it takes longer.
+    const timer = setTimeout(() => {
+      if (img.complete) {
+        checkComplete();
+      } else {
+        img.onload = () => {
+          checkComplete();
+        };
+        img.onerror = () => {
+          // If it fails to load, don't block the user forever
+          checkComplete();
+        };
+      }
+    }, 4000);
+
+    return () => {
+      clearTimeout(timer);
+      img.onload = null;
+      img.onerror = null;
+    };
   }, [onComplete]);
 
   return (

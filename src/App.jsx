@@ -155,6 +155,7 @@ function App() {
               onScrollDown={() => { setIsIntroActive(false); scrollTo('section-2'); }}
               activeSection={activeSection}
               scrollTo={scrollTo}
+              isAppLoading={isAppLoading}
             />
             <AboutSection onScrollDown={() => scrollTo('section-3')} />
             <ProjectsSection />

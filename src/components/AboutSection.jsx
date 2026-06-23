@@ -1,7 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 function AboutSection({ onScrollDown }) {
+  const roles = ['Full Stack Developer', 'UI/UX Designer', 'AI/ML', 'Data Analytics'];
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    const fullText = roles[currentRoleIndex];
+    const typingSpeed = 180;
+    const deletingSpeed = 80;
+    const delayBetweenRoles = 1500;
+
+    if (isDeleting) {
+      timer = setTimeout(() => {
+        setCurrentText(fullText.substring(0, currentText.length - 1));
+      }, deletingSpeed);
+    } else {
+      timer = setTimeout(() => {
+        setCurrentText(fullText.substring(0, currentText.length + 1));
+      }, typingSpeed);
+    }
+
+    if (!isDeleting && currentText === fullText) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, delayBetweenRoles);
+    }
+
+    if (isDeleting && currentText === '') {
+      setIsDeleting(false);
+      setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, currentRoleIndex]);
+
   return (
     <section id="section-2" className="portfolio-section about-section">
 
@@ -23,7 +60,12 @@ function AboutSection({ onScrollDown }) {
               Currently Studying
             </div>
 
-            <h2 className="about-heading">Hello, I'm Abhi</h2>
+            <h2 className="about-heading">
+              Hello, I'm Abhi <br />
+              <span className="typing-text-container">
+                [<span className="typing-text">{currentText}</span><span className="typing-cursor">|</span>]
+              </span>
+            </h2>
 
             <p className="about-bio">
               A passionate full stack developer dedicated to turning real-world

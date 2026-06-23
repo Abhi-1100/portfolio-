@@ -1,12 +1,30 @@
 import React, { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { SECTIONS } from '../App';
+import mainBg from '../assets/main_lending.jpeg';
 
-function HeroSection({ onScrollDown, activeSection, scrollTo }) {
+function HeroSection({ onScrollDown, activeSection, scrollTo, isAppLoading }) {
   const heroRef = useRef(null);
 
   return (
-    <section id="section-1" className="hero-section" ref={heroRef}>
+    <section id="section-1" className={`hero-section ${!isAppLoading ? 'reveal-bg' : ''}`} ref={heroRef}>
+
+      {/* Background Image Element (Animates Scale) */}
+      <img src={mainBg} alt="" className="hero-bg-image" />
+
+      {/* Strips Mask Animation Overlay */}
+      <div className="hero-strips-mask">
+        <div className="hero-strip"></div>
+        <div className="hero-strip"></div>
+        <div className="hero-strip"></div>
+        <div className="hero-strip"></div>
+        <div className="hero-strip"></div>
+        <div className="hero-strip"></div>
+        <div className="hero-strip"></div>
+        <div className="hero-strip"></div>
+        <div className="hero-strip"></div>
+        <div className="hero-strip"></div>
+      </div>
 
       {/* Geometric lines matching the loading screen */}
       <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', opacity: 0.8 }}>
